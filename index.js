@@ -5,26 +5,71 @@
 // out?address=<address>[&value=<satoshis>][&n=<uint>]
 // out?script=<hex>[&value=<satoshis>][&n=<uint>]
 
+var typeforce = require('typeforce')
 var qs = require('qs')
+
+var SATOSHI_MAX = 21 * 1e14
+function Satoshi (value) {
+  return typeforce.UInt53(value) && value <= SATOSHI_MAX
+}
 
 function decodeTx (string) {
   var p = qs.parse(string.slice(3))
-  if (p.version !== undefined) p.version = parseInt(p.version, 10) | 0
-  if (p.locktime !== undefined) p.locktime = parseInt(p.locktime, 10) >>> 0
+  if (p.version !== undefined) p.version = parseInt(p.version, 10)
+  if (p.locktime !== undefined) p.locktime = parseInt(p.locktime, 10)
   if (p.anyonecanpay !== undefined) p.anyonecanpay = 1
+
+  typeforce({
+    version: typeforce.maybe(typeforce.Int32),
+    locktime: typeforce.maybe(typeforce.UInt32),
+    anyonecanpay: typeforce.maybe(1)
+  }, p)
+
   return p
 }
 
 function decodeInput (string) {
   var p = qs.parse(string.slice(3))
-  p.vout = parseInt(p.vout, 10) >>> 0
+  p.vout = parseInt(p.vout, 10)
+
+  if (p.witness !== undefined) {
+    p.value = parseFloat(p.value)
+    typeforce({
+      txId: typeforce.HexN(64),
+      vout: typeforce.UInt32,
+      script: typeforce.maybe(typeforce.Hex),
+      witness: typeforce.Hex,
+      sequence: typeforce.maybe(typeforce.UInt32),
+      value: Satoshi
+    }, p)
+  } else {
+    typeforce({
+      txId: typeforce.HexN(64),
+      vout: typeforce.UInt32,
+      script: typeforce.Hex,
+      sequence: typeforce.maybe(typeforce.UInt32)
+    }, p)
+  }
+
   return p
 }
 
 function decodeOutput (string) {
   var p = qs.parse(string.slice(4))
   p.value = parseFloat(p.value)
-  if (p.value !== Math.floor(p.value)) throw new TypeError('Bad output value')
+
+  if (p.address) {
+    typeforce({
+      address: typeforce.String,
+      value: Satoshi
+    }, p, true)
+  } else {
+    typeforce({
+      script: typeforce.Hex,
+      value: Satoshi
+    }, p, true)
+  }
+
   return p
 }
 
