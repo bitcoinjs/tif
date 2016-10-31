@@ -28,7 +28,8 @@
     "unit": "tape test/*.js"
   },
   "dependencies": {
-    "bs58check": "^1.0.6"
+    "bs58check": "^1.0.6",
+    "qs": "^6.3.0"
   },
   "devDependencies": {
     "nyc": "^6.4.0",

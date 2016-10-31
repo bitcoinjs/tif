@@ -8,6 +8,17 @@
 Bitcoin Transaction Interchange Format (TIF) decoding/encoding module.
 
 
+## Format
+
+``` markdown
+tx?[version=<int>][&locktime=<uint>][&anyonecanpay=1]
+in?txid=<txid>&vout=<uint>&script=<hex>[&txhex=<txhex>][&sequence=<uint>]
+in?txid=<txid>&vout=<uint>&witness=<hex>&value=<satoshis>[&script=<hex>][&sequence=<uint>]
+out?address=<address>[&value=<satoshis>][&n=<uint>]
+out?script=<hex>[&value=<satoshis>][&n=<uint>]
+```
+
+
 ## Example
 
 ``` javascript
