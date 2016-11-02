@@ -3,7 +3,7 @@ var tif = require('../')
 var fixtures = require('./fixtures')
 
 fixtures.forEach(function (f) {
-  tape('encode returns ' + JSON.stringify(f.text).slice(0, 40) + ' for ' + JSON.stringify(f.raw).slice(0, 80) + '...', function (t) {
+  tape('encodes ' + f.description + ' for ' + JSON.stringify(f.raw).slice(0, 80) + '...', function (t) {
     t.plan(1)
     t.equal(tif.encode(f.raw), f.text)
   })
@@ -12,7 +12,7 @@ fixtures.forEach(function (f) {
 fixtures.forEach(function (f) {
   if (!f.text) return
 
-  tape('decodes ' + JSON.stringify(f.text).slice(0, 40) + ' to ' + JSON.stringify(f.raw).slice(0, 80) + '...', function (t) {
+  tape('decodes ' + f.description + ' to ' + JSON.stringify(f.raw).slice(0, 80) + '...', function (t) {
     t.plan(1)
     t.same(tif.decode(f.text), f.raw)
   })

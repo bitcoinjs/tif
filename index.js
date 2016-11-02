@@ -32,6 +32,10 @@ function decodeInput (string) {
   var p = qs.parse(string.slice(3))
   p.vout = parseInt(p.vout, 10)
 
+  if (p.sequence !== undefined) {
+    p.sequence = parseInt(p.sequence, 10)
+  }
+
   if (p.witness !== undefined) {
     p.value = parseFloat(p.value)
     typeforce({
@@ -46,7 +50,7 @@ function decodeInput (string) {
     typeforce({
       txId: typeforce.HexN(64),
       vout: typeforce.UInt32,
-      script: typeforce.Hex,
+      script: typeforce.maybe(typeforce.Hex), // optional: could be a signing request
       sequence: typeforce.maybe(typeforce.UInt32)
     }, p)
   }
@@ -56,17 +60,20 @@ function decodeInput (string) {
 
 function decodeOutput (string) {
   var p = qs.parse(string.slice(4))
-  p.value = parseFloat(p.value)
+
+  if (p.value !== undefined) {
+    p.value = parseFloat(p.value)
+  }
 
   if (p.address) {
     typeforce({
       address: typeforce.String,
-      value: Satoshi
+      value: typeforce.maybe(Satoshi)
     }, p, true)
   } else {
     typeforce({
       script: typeforce.Hex,
-      value: Satoshi
+      value: typeforce.maybe(Satoshi)
     }, p, true)
   }
 
