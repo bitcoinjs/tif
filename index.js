@@ -30,12 +30,8 @@ function decodeTx (string) {
 
 function decodeInput (string) {
   var p = qs.parse(string.slice(3))
-  p.vout = parseInt(p.vout, 10)
-
-  if (p.sequence !== undefined) {
-    p.sequence = parseInt(p.sequence, 10)
-  }
-
+  if (p.vout !== undefined) p.vout = parseInt(p.vout, 10)
+  if (p.sequence !== undefined) p.sequence = parseInt(p.sequence, 10)
   if (p.witness !== undefined) {
     p.value = parseFloat(p.value)
     typeforce({
@@ -61,20 +57,17 @@ function decodeInput (string) {
 function decodeOutput (string) {
   var p = qs.parse(string.slice(4))
 
-  if (p.value !== undefined) {
-    p.value = parseFloat(p.value)
-  }
-
-  if (p.address) {
+  if (p.value !== undefined) p.value = parseFloat(p.value)
+  if (p.address !== undefined) {
     typeforce({
       address: typeforce.String,
       value: typeforce.maybe(Satoshi)
-    }, p, true)
+    }, p)
   } else {
     typeforce({
       script: typeforce.Hex,
       value: typeforce.maybe(Satoshi)
-    }, p, true)
+    }, p)
   }
 
   return p

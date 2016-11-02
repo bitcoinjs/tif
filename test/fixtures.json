@@ -92,6 +92,19 @@
     }
   },
   {
+    "description": "Donation request (w/ tag)",
+    "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&tag=A%20good%20cause",
+    "raw": {
+      "ins": [],
+      "outs": [
+        {
+          "address": "1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm",
+          "tag": "A good cause"
+        }
+      ]
+    }
+  },
+  {
     "description": "Proof-of-ownership request",
     "text": "in?txId=0000000000000000000000000000000000000000000000000000000000000003&vout=0\nout?script=6a2606deadbeef03f895a2ad89fb6d696497af486cb7c644a27aa568c7a18dd06113401115185474&value=6000",
     "raw": {
