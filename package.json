@@ -1,6 +1,6 @@
 {
   "name": "tif",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Bitcoin Transaction Interchange Format (TIF) decoding/encoding module",
   "author": "Daniel Cousens",
   "license": "MIT",
