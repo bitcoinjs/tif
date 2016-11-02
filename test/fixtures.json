@@ -63,6 +63,23 @@
     }
   },
   {
+    "description": "Normal transaction (w/ OP_RETURN tag)",
+    "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=34000\nout?script=6a2606deadbeef03f895a2ad89fb6d696497af486cb7c644a27aa568c7a18dd06113401115185474&value=6000",
+    "raw": {
+      "ins": [],
+      "outs": [
+        {
+          "address": "1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm",
+          "value": 34000
+        },
+        {
+          "script": "6a2606deadbeef03f895a2ad89fb6d696497af486cb7c644a27aa568c7a18dd06113401115185474",
+          "value": 6000
+        }
+      ]
+    }
+  },
+  {
     "description": "Incomplete multisignature transaction",
     "text": "tx?version=2&locktime=0\nin?txId=0000000000000000000000000000000000000000000000000000000000000001&vout=0&script=0047304402207515cf147d201f411092e6be5a64a6006f9308fad7b2a8fdaab22cd86ce764c202200974b8aca7bf51dbf54150d3884e1ae04f675637b926ec33bf75939446f6ca2801483045022100ef253c1faa39e65115872519e5f0a33bbecf430c0f35cf562beabbad4da24d8d02201742be8ee49812a73adea3007c9641ce6725c32cd44ddb8e3a3af460015d140501\nout?address=3LRW7jeCvQCRdPF8S3yUCfRAx4eqXFmdcr&value=1230000",
     "raw": {
