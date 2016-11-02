@@ -1,5 +1,68 @@
 [
   {
+    "description": "Anyonecanpay join transaction (no signatures)",
+    "text": "tx?anyonecanpay=1\nout?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=20000\nout?address=1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH&value=20000\nout?address=1LagHJk2FyCV2VzrNHVqg3gYG4TSYwDV4m&value=20000\nout?address=1cMh228HTCiwS8ZsaakH8A8wze1JR5ZsP&value=20000",
+    "raw": {
+      "anyonecanpay": 1,
+      "ins": [],
+      "outs": [
+        {
+          "address": "1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm",
+          "value": 20000
+        },
+        {
+          "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+          "value": 20000
+        },
+        {
+          "address": "1LagHJk2FyCV2VzrNHVqg3gYG4TSYwDV4m",
+          "value": 20000
+        },
+        {
+          "address": "1cMh228HTCiwS8ZsaakH8A8wze1JR5ZsP",
+          "value": 20000
+        }
+      ]
+    }
+  },
+  {
+    "description": "Anyonecanpay join transaction (two signatures)",
+    "text": "tx?anyonecanpay=1\nin?txId=0000000000000000000000000000000000000000000000000000000000000001&vout=0&script=483045022100a9e1c8edf351ed2caf6742c79cf8db12f64658763834ebe41ce9b6df1701c48202202ae52d73b0aa2cfd00f622330ca0a3849f047545e38cd025d5d64c97c72c9d26012102e7fb8f2a73641cc6e09b89954cf41724b2a8c9d5f646ad01285cb2ff7ff001af\nin?txId=0000000000000000000000000000000000000000000000000000000000000002&vout=0&script=483045022100fe752b357cd6223092ff495cba6df2df8965bb6f6c4ec03f79a171c85aca203902205376cc2c3fae954da568a224d45ffc517afd37485ffdb8a9fc52902070c5e081012103614b88b07a796f7337a9c302cf3f5e2bcb1e5f93045d4d6b78d81532fa52592a\nout?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=20000\nout?address=1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH&value=20000\nout?address=1LagHJk2FyCV2VzrNHVqg3gYG4TSYwDV4m&value=20000\nout?address=1cMh228HTCiwS8ZsaakH8A8wze1JR5ZsP&value=20000",
+    "raw": {
+      "anyonecanpay": 1,
+      "ins": [
+        {
+          "txId": "0000000000000000000000000000000000000000000000000000000000000001",
+          "vout": 0,
+          "script": "483045022100a9e1c8edf351ed2caf6742c79cf8db12f64658763834ebe41ce9b6df1701c48202202ae52d73b0aa2cfd00f622330ca0a3849f047545e38cd025d5d64c97c72c9d26012102e7fb8f2a73641cc6e09b89954cf41724b2a8c9d5f646ad01285cb2ff7ff001af"
+        },
+        {
+          "txId": "0000000000000000000000000000000000000000000000000000000000000002",
+          "vout": 0,
+          "script": "483045022100fe752b357cd6223092ff495cba6df2df8965bb6f6c4ec03f79a171c85aca203902205376cc2c3fae954da568a224d45ffc517afd37485ffdb8a9fc52902070c5e081012103614b88b07a796f7337a9c302cf3f5e2bcb1e5f93045d4d6b78d81532fa52592a"
+        }
+      ],
+      "outs": [
+        {
+          "address": "1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm",
+          "value": 20000
+        },
+        {
+          "address": "1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH",
+          "value": 20000
+        },
+        {
+          "address": "1LagHJk2FyCV2VzrNHVqg3gYG4TSYwDV4m",
+          "value": 20000
+        },
+        {
+          "address": "1cMh228HTCiwS8ZsaakH8A8wze1JR5ZsP",
+          "value": 20000
+        }
+      ]
+    }
+  },
+  {
     "description": "Incomplete multisignature transaction",
     "text": "tx?version=2&locktime=0\nin?txId=0000000000000000000000000000000000000000000000000000000000000001&vout=0&script=0047304402207515cf147d201f411092e6be5a64a6006f9308fad7b2a8fdaab22cd86ce764c202200974b8aca7bf51dbf54150d3884e1ae04f675637b926ec33bf75939446f6ca2801483045022100ef253c1faa39e65115872519e5f0a33bbecf430c0f35cf562beabbad4da24d8d02201742be8ee49812a73adea3007c9641ce6725c32cd44ddb8e3a3af460015d140501\nout?address=3LRW7jeCvQCRdPF8S3yUCfRAx4eqXFmdcr&value=1230000",
     "raw": {

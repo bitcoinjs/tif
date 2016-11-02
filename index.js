@@ -106,13 +106,17 @@ function encode (tx) {
     }))
   }
 
-  tx.ins.forEach(function (input) {
-    lines.push('in?' + qs.stringify(input))
-  })
+  if (tx.ins) {
+    tx.ins.forEach(function (input) {
+      lines.push('in?' + qs.stringify(input))
+    })
+  }
 
-  tx.outs.forEach(function (output) {
-    lines.push('out?' + qs.stringify(output))
-  })
+  if (tx.outs) {
+    tx.outs.forEach(function (output) {
+      lines.push('out?' + qs.stringify(output))
+    })
+  }
 
   return lines.join('\n')
 }
