@@ -28,7 +28,6 @@
     "unit": "tape test/*.js"
   },
   "dependencies": {
-    "bs58check": "^1.0.6",
     "qs": "^6.3.0",
     "typeforce": "^1.9.1"
   },
