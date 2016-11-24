@@ -235,6 +235,11 @@
       "description": "Non-number output value",
       "exception": "Expected property \"value\" of type \\?Satoshi, got Number NaN",
       "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=foobar"
+    },
+    {
+      "description": "Negative output value",
+      "exception": "Expected property \"value\" of type \\?Satoshi, got Number -1",
+      "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=-1"
     }
   ]
 }
