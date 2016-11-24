@@ -228,12 +228,12 @@
     },
     {
       "description": "Hex output value",
-      "exception": "Expected property \"value\" of type \\?Satoshi, got Number NaN",
+      "exception": "Expected property \"value\" of type \\?Satoshi, got String \"0xdeadbeef\"",
       "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=0xdeadbeef"
     },
     {
       "description": "Non-number output value",
-      "exception": "Expected property \"value\" of type \\?Satoshi, got Number NaN",
+      "exception": "Expected property \"value\" of type \\?Satoshi, got String \"foobar\"",
       "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=foobar"
     },
     {

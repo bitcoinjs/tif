@@ -15,7 +15,7 @@ function Satoshi (value) {
 
 function parseIntSafe (text) {
   var value = parseInt(text, 10)
-  if (value !== Number(text)) return NaN
+  if (value !== Number(text)) return text
   return value
 }
 
