@@ -3,14 +3,19 @@ var tif = require('../')
 var fixtures = require('./fixtures')
 
 fixtures.valid.forEach(function (f) {
-  tape('encodes ' + f.description + ' for ' + JSON.stringify(f.raw).slice(0, 80) + '...', function (t) {
+  // FIXME: we don't handle custom for now
+  if (f.custom) return
+  var raw = f.__raw || f.raw
+
+  tape('encodes ' + f.description + ' for ' + JSON.stringify(raw).slice(0, 80) + '...', function (t) {
     t.plan(1)
-    t.equal(tif.encode(f.raw), f.text)
+    t.equal(tif.encode(raw), f.text)
   })
 })
 
 fixtures.valid.forEach(function (f) {
-  if (!f.text) return
+  if (f.text === undefined) return
+  if (f.raw === undefined) return
 
   tape('decodes ' + f.description + ' to ' + JSON.stringify(f.raw).slice(0, 80) + '...', function (t) {
     t.plan(1)

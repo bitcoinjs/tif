@@ -13,10 +13,16 @@ function Satoshi (value) {
   return typeforce.UInt53(value) && value <= SATOSHI_MAX
 }
 
+function parseIntSafe (text) {
+  var value = parseInt(text, 10)
+  if (value !== Number(text)) return NaN
+  return value
+}
+
 function decodeTx (string) {
   var p = qs.parse(string.slice(3))
-  if (p.version !== undefined) p.version = parseInt(p.version, 10)
-  if (p.locktime !== undefined) p.locktime = parseInt(p.locktime, 10)
+  if (p.version !== undefined) p.version = parseIntSafe(p.version, 10)
+  if (p.locktime !== undefined) p.locktime = parseIntSafe(p.locktime, 10)
   if (p.anyonecanpay !== undefined) p.anyonecanpay = 1
 
   typeforce({
@@ -30,11 +36,10 @@ function decodeTx (string) {
 
 function decodeInput (string) {
   var p = qs.parse(string.slice(3))
-  if (p.vout !== undefined) p.vout = parseInt(p.vout, 10)
-  if (p.sequence !== undefined) p.sequence = parseInt(p.sequence, 10)
+  if (p.vout !== undefined) p.vout = parseIntSafe(p.vout, 10)
+  if (p.sequence !== undefined) p.sequence = parseIntSafe(p.sequence, 10)
   if (p.witness !== undefined) {
-    // FIXME: Number is ~OK,  but allows 0x1f etc
-    p.value = Number(p.value)
+    p.value = parseIntSafe(p.value, 10)
     typeforce({
       txId: typeforce.HexN(64),
       vout: typeforce.UInt32,
@@ -58,8 +63,7 @@ function decodeInput (string) {
 function decodeOutput (string) {
   var p = qs.parse(string.slice(4))
 
-  // FIXME: Number is ~OK,  but allows 0x1f etc
-  if (p.value !== undefined) p.value = Number(p.value)
+  if (p.value !== undefined) p.value = parseIntSafe(p.value, 10)
   if (p.address !== undefined) {
     typeforce({
       address: typeforce.String,

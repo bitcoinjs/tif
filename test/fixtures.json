@@ -195,6 +195,7 @@
     {
       "description": "Skips unknown",
       "text": "apples?oranges=1",
+      "custom": true,
       "raw": {
         "ins": [],
         "outs": []
@@ -211,7 +212,7 @@
     {
       "description": "Empty (2)",
       "text": "",
-      "raw": {}
+      "__raw": {}
     }
   ],
   "invalid": [
@@ -226,9 +227,14 @@
       "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=20000000000000000000"
     },
     {
+      "description": "Hex output value",
+      "exception": "Expected property \"value\" of type \\?Satoshi, got Number NaN",
+      "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=0xdeadbeef"
+    },
+    {
       "description": "Non-number output value",
       "exception": "Expected property \"value\" of type \\?Satoshi, got Number NaN",
-      "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=deadbeef"
+      "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=foobar"
     }
   ]
 }
