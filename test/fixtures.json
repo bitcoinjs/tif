@@ -193,6 +193,14 @@
       }
     },
     {
+      "description": "Skips unknown",
+      "text": "apples?oranges=1",
+      "raw": {
+        "ins": [],
+        "outs": []
+      }
+    },
+    {
       "description": "Empty",
       "text": "",
       "raw": {
@@ -219,7 +227,7 @@
     },
     {
       "description": "Non-number output value",
-      "exception": "ExpectedX",
+      "exception": "Expected property \"value\" of type \\?Satoshi, got Number NaN",
       "text": "out?address=1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm&value=deadbeef"
     }
   ]
