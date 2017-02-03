@@ -22,7 +22,23 @@ out?script=<hex>[&value=<satoshis>]
 ## Example
 
 ``` javascript
-var tif = require('tif')
+let tif = require('tif')
+
+tif.encode({
+  tx: {
+    version: 2
+  },
+  outs: [
+    {
+      address: '1BgGZ9tcN4rm9KBzDn7KprQz87SZ26SAMH',
+      value: 100000
+    },
+    {
+      address: '1cMh228HTCiwS8ZsaakH8A8wze1JR5ZsP',
+      value: 100000
+    }
+  ]
+})
 ```
 
 ## LICENSE [MIT](LICENSE)
